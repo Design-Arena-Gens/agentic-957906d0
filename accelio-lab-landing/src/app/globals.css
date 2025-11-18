@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f6f7fb;
+  --foreground: #0b1124;
+  --surface: #ffffff;
+  --muted: #5c6889;
+  --primary: #5a5bf3;
+  --primary-dark: #3537c3;
+  --accent: #0ddbc2;
+  --accent-soft: rgba(13, 219, 194, 0.12);
+  --border: rgba(16, 24, 40, 0.08);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-muted: var(--muted);
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-border: var(--border);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  color: var(--foreground);
+  background: radial-gradient(
+      circle at top left,
+      rgba(90, 91, 243, 0.12),
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(13, 219, 194, 0.1),
+      transparent 45%
+    ),
+    var(--background);
+  font-family: var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+}
+
+::selection {
+  background-color: color-mix(in srgb, var(--primary) 18%, transparent);
+}
+
+summary {
+  list-style: none;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+details > summary::after {
+  content: "▾";
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  transition: transform 0.2s ease;
+}
+
+details[open] > summary::after {
+  transform: rotate(180deg);
+}
